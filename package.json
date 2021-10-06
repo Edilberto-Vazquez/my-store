@@ -1,0 +1,35 @@
+{
+  "name": "my-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Edilberto-Vazquez/my-store.git"
+  },
+  "keywords": [
+    "javascritp",
+    "nodejs",
+    "API",
+    "REST",
+    "Expressjs"
+  ],
+  "author": "<Edilberto Vazquez Luna>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Edilberto-Vazquez/my-store/issues"
+  },
+  "homepage": "https://github.com/Edilberto-Vazquez/my-store#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.13",
+    "prettier": "^2.4.1"
+  }
+}
