@@ -42,4 +42,24 @@ router.post('/', (req, res) => {
   });
 });
 
+// patch method
+router.patch('/:id', (req, res) => {
+  const { id } = req.params;
+  const body = req.body;
+  res.json({
+    message: 'created',
+    data: body,
+    id,
+  });
+});
+
+// delete method
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  res.json({
+    message: 'delete',
+    id,
+  });
+});
+
 module.exports = router;
