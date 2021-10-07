@@ -16,5 +16,5 @@ app.use(express.json());
 routerApi(app);
 
 app.listen(port, () => {
-  console.log('Mi port ' + port);
+  // console.log('Mi port ' + port);
 });
