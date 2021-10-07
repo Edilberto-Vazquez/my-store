@@ -3,7 +3,6 @@ const router = express.Router();
 const faker = require('faker');
 
 // method to get products
-
 router.get('/', (req, res) => {
   const { size } = req.query;
   const limit = size || 10;
@@ -31,6 +30,15 @@ router.get('/:id', (req, res) => {
     id,
     name: 'Product 5',
     price: 400,
+  });
+});
+
+// post method
+router.post('/', (req, res) => {
+  const body = req.body;
+  res.json({
+    message: 'created',
+    data: body,
   });
 });
 
