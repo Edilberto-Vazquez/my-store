@@ -8,8 +8,8 @@ const {
   boomErrorHandler,
 } = require('./middlewares/errorHandler');
 
-routerApi(app);
 app.use(express.json());
+routerApi(app);
 app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(errorHandler);
