@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require("cors")
 const app = express();
 const port = 3000;
 const routerApi = require('./routes');
@@ -8,7 +9,20 @@ const {
   boomErrorHandler,
 } = require('./middlewares/errorHandler');
 
+const whiteList = ["http://127.0.0.1:5500"]
+
+const options = {
+  origin: (origin, callback) => {
+    if (whiteList.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error("not allowed"))
+    }
+  }
+}
+
 app.use(express.json());
+app.use(cors(options))
 routerApi(app);
 app.use(logErrors);
 app.use(boomErrorHandler);
