@@ -9,20 +9,20 @@ const {
 
 const app = express();
 const port = process.env.PORT || 3000;
-const whiteList = ["http://127.0.0.1:5500"]
+// const whiteList = ["http://127.0.0.1:5500"]
 
-const options = {
-  origin: (origin, callback) => {
-    if ((whiteList.indexOf(origin) !== -1) || !origin) {
-      callback(null, true)
-    } else {
-      callback(new Error("not allowed"))
-    }
-  }
-}
+// const options = {
+//   origin: (origin, callback) => {
+//     if ((whiteList.indexOf(origin) !== -1) || !origin) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error("not allowed"))
+//     }
+//   }
+// }
 
 app.use(express.json());
-app.use(cors(options))
+app.use(cors())
 app.get('/', (req, res) => {
   res.send('Hello, my server in express');
 });
