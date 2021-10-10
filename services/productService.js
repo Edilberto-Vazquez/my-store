@@ -14,6 +14,7 @@ class ProductsService {
         id: faker.datatype.uuid(),
         name: faker.commerce.productName(),
         price: parseInt(faker.commerce.price(), 10),
+        category: faker.commerce.department(),
         image: faker.image.imageUrl(),
         isBlock: faker.datatype.boolean(),
       });
@@ -33,7 +34,7 @@ class ProductsService {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(this.products);
-      }, 5000);
+      }, 1000);
     });
   }
 
@@ -68,6 +69,12 @@ class ProductsService {
     }
     this.products.splice(index, 1);
     return { id };
+  }
+
+  async findCategory(id, price) {
+    const priceN = parseInt(price, 10)
+    const category = this.products.filter(item => item.category === id && item.price <= priceN)
+    return category
   }
 }
 

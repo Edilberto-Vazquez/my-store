@@ -1,12 +1,19 @@
 const express = require('express');
 const router = express.Router();
+const ProductsService = require("../services/productService")
 
-router.get('/:categoryId/products/:productId', (req, res) => {
-  const { categoryId, productId } = req.params;
-  res.json({
-    categoryId,
-    productId,
-  });
+const service = new ProductsService()
+
+router.get('/', async (req, res) => {
+  // const { categoryId, productId } = req.params;
+  const categories = await service.find()
+  res.json({categories});
+});
+
+router.get('/:categoryId/:price', async (req, res) => {
+  const { categoryId, price } = req.params;
+  const categories = await service.findCategory(categoryId, price)
+  res.json({categories});
 });
 
 module.exports = router;
