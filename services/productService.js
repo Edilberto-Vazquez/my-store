@@ -1,10 +1,13 @@
 const faker = require('faker');
 const boom = require('@hapi/boom');
+const pool = require('../libs/postgresPool');
 
 class ProductsService {
   constructor() {
     this.products = [];
     this.generate();
+    this.pool = pool;
+    this.pool.on('error', (err) => console.log(err));
   }
 
   generate() {
@@ -30,12 +33,15 @@ class ProductsService {
     return newProduct;
   }
 
-  find() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(this.products);
-      }, 1000);
-    });
+  async find() {
+    const query = 'SELECT * FROM tasks';
+    const res = await this.pool.query(query);
+    return res.rows;
+    // return new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     resolve(this.products);
+    //   }, 1000);
+    // });
   }
 
   async findOne(id) {
@@ -72,9 +78,11 @@ class ProductsService {
   }
 
   async findCategory(id, price) {
-    const priceN = parseInt(price, 10)
-    const category = this.products.filter(item => item.category === id && item.price <= priceN)
-    return category
+    const priceN = parseInt(price, 10);
+    const category = this.products.filter(
+      (item) => item.category === id && item.price <= priceN
+    );
+    return category;
   }
 }
 
