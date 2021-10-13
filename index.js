@@ -5,11 +5,13 @@ const {
   logErrors,
   errorHandler,
   boomErrorHandler,
-  queryErrorHandler,
+  ormErrorHandler,
 } = require('./middlewares/errorHandler');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// cors options
 // const whiteList = ["http://127.0.0.1:5500"]
 
 // const options = {
@@ -29,7 +31,7 @@ app.get('/', (req, res) => {
 });
 routerApi(app);
 app.use(logErrors);
-app.use(queryErrorHandler);
+app.use(ormErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 app.listen(port, () => {
