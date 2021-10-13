@@ -22,13 +22,13 @@ const UserSchema = {
     allowNull: false,
     type: DataTypes.DATE,
     field: 'create_at',
-    defaultvalue: Sequelize.NOW,
+    defaultValue: Sequelize.NOW,
   },
 };
 
 class User extends Model {
   static associate() {
-    // models
+    // associate
   }
 
   static config(sequelize) {
