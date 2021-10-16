@@ -1,7 +1,7 @@
 const faker = require('faker');
 const boom = require('@hapi/boom');
+
 const { models } = require('../libs/sequelize');
-// const sequelize = require('../libs/sequelize');
 
 class ProductsService {
   constructor() {
@@ -16,7 +16,6 @@ class ProductsService {
         id: faker.datatype.uuid(),
         name: faker.commerce.productName(),
         price: parseInt(faker.commerce.price(), 10),
-        category: faker.commerce.department(),
         image: faker.image.imageUrl(),
         isBlock: faker.datatype.boolean(),
       });
@@ -24,25 +23,15 @@ class ProductsService {
   }
 
   async create(data) {
-    const newProduct = {
-      id: faker.datatype.uuid(),
-      ...data,
-    };
-    this.products.push(newProduct);
+    const newProduct = await models.Product.create(data);
     return newProduct;
   }
 
   async find() {
-    // const query = 'SELECT * FROM tasks';
-    // const [data] = await sequelize.query(query);
-    // return data;
-    // return new Promise((resolve, reject) => {
-    //   setTimeout(() => {
-    //     resolve(this.products);
-    //   }, 1000);
-    // });
-    const res = await models.Product.findAll();
-    return res;
+    const products = await models.Product.findAll({
+      include: ['category'],
+    });
+    return products;
   }
 
   async findOne(id) {
@@ -76,14 +65,6 @@ class ProductsService {
     }
     this.products.splice(index, 1);
     return { id };
-  }
-
-  async findCategory(id, price) {
-    const priceN = parseInt(price, 10);
-    const category = this.products.filter(
-      (item) => item.category === id && item.price <= priceN
-    );
-    return category;
   }
 }
 
