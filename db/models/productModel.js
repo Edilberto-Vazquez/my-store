@@ -1,6 +1,6 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
-const { CATEGORY_TABLE } = require('./categoryModel');
+const { CATEGORIES_TABLE } = require('./categoryModel');
 
 const PRODUCT_TABLE = 'Products';
 
@@ -30,7 +30,7 @@ const ProductSchema = {
     allowNull: false,
     type: DataTypes.INTEGER,
     references: {
-      model: CATEGORY_TABLE,
+      model: CATEGORIES_TABLE,
       key: 'id',
     },
     onUpdate: 'CASCADE',
