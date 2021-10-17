@@ -1,10 +1,10 @@
 'use strict';
 
-const { CustomerSchema, CUSTOMER_TABLE } = require('../models/costumerModel');
+const { CustomerSchema, CUSTOMER_TABLE } = require('../models/customerModel');
 
 module.exports = {
   up: async (queryInterface) => {
-    await queryInterface.renameTable('costumers', 'Customers', CustomerSchema);
+    await queryInterface.renameTable('customers', 'Customers', CustomerSchema);
   },
 
   down: async (queryInterface) => {
