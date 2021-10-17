@@ -6,15 +6,24 @@ const {
   createProductSchema,
   updateProductSchema,
   getProductSchema,
+  queryProductSchema,
 } = require('../schemas/productSchema');
 
 const service = new ProductsService();
 
 // method to get products
-router.get('/', async (req, res) => {
-  const products = await service.find();
-  res.json(products);
-});
+router.get(
+  '/',
+  validatorHandler(queryProductSchema, 'query'),
+  async (req, res, next) => {
+    try {
+      const products = await service.find(req.query);
+      res.json(products);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 // put specific endpoints before dynamic endpoints
 router.get('/filter', (req, res) => {
