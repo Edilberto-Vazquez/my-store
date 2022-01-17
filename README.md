@@ -1,17 +1,18 @@
 # inaoe-weather-data-API
 Weather data API from INAOE weather stations
+This page was development with NodeJS and ExpressJS with Sequelize as ORM
 
-
-
-NodeJS is needed to run the project and Heroku CLI to deploy. For more information about how to deploy to heroku see the official page https://devcenter.heroku.com/articles/git
+NodeJS is needed to run the project and Heroku CLI to deploy. For more information about how to deploy to heroku refer to the official page https://devcenter.heroku.com/articles/git
 
 For install dependecies run `npm install`
 
 TO-DO
+-------------
 
 Insert data into the database and validations when the user registers and logs in
 
-####Libraries used
+Libraries used
+-------------
 
 + "hapi/boom"
 + "cors"
