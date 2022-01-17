@@ -1,4 +1,4 @@
-# inaoe-weather-data-API
+# My-Store
 REST-API that simulates a store
 This page was development with NodeJS and ExpressJS with Sequelize as ORM
 
