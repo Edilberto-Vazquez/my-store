@@ -1,9 +1,9 @@
-# my-store
-REST API that simulates a store
+# inaoe-weather-data-API
+Weather data API from INAOE weather stations
 
-The development of the API rest was done with NodeJS and Express with deployment to heroku, for managing the DB the ORM Sequelize was used
 
-needed NodeJS to run the project and Heroku CLI for deploy. For more information about how to deploy to heroku check the official page https://devcenter.heroku.com/articles/git
+
+NodeJS is needed to run the project and Heroku CLI to deploy. For more information about how to deploy to heroku see the official page https://devcenter.heroku.com/articles/git
 
 For install dependecies run `npm install`
 
